@@ -50,7 +50,7 @@ insert into categories (name, slug, description, icon) values
   ('네트워크', 'networks', 'TCP/IP, HTTP, DNS 등 컴퓨터 네트워킹 개념', '🌐'),
   ('데이터베이스', 'databases', '관계형 DB, SQL, 인덱싱, 트랜잭션', '🗄️'),
   ('컴퓨터구조', 'computer-architecture', 'CPU, 메모리 계층, 명령어 집합 구조', '🔧'),
-  ('언어 & 컴파일러', 'languages-compilers', '프로그래밍 언어 이론, 파싱, 최적화', '📝'),
+  ('개발', 'languages-compilers', '프로그래밍 언어 이론, 파싱, 최적화', '📝'),
   ('보안', 'security', '암호화, 인증, 취약점, 보안 프로토콜', '🔐')
 on conflict (slug) do nothing;
 

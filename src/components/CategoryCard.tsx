@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Category } from '@/types'
 import { getCategoryColors } from '@/lib/categoryColors'
+import CategoryIcon from './CategoryIcon'
 
 type Props = {
   category: Category
@@ -16,9 +17,9 @@ export default function CategoryCard({ category, articleCount }: Props) {
       className={`group block p-5 rounded-xl border bg-gradient-to-br ${colors.gradient} ${colors.border} hover:border-opacity-60 transition-all duration-300 hover:shadow-xl ${colors.glow}`}
     >
       <div className="flex items-start gap-3">
-        {category.icon && (
-          <span className="text-2xl leading-none mt-0.5">{category.icon}</span>
-        )}
+        <span className="mt-0.5 rounded-lg border border-white/[0.08] bg-white/[0.06] p-2 text-white/80 transition-colors group-hover:text-white">
+          <CategoryIcon slug={category.slug} className="h-5 w-5" />
+        </span>
         <div className="min-w-0">
           <h2 className="text-white font-semibold text-sm truncate group-hover:text-white/90">
             {category.name}

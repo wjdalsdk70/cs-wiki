@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { ArticleWithCategory } from '@/types'
 import { getCategoryColors } from '@/lib/categoryColors'
+import CategoryIcon from '@/components/CategoryIcon'
 
 export const revalidate = 60
 
@@ -41,7 +42,9 @@ export default async function CategoryPage({ params }: Props) {
 
         <div className={`mt-5 p-6 rounded-2xl border bg-gradient-to-br ${colors.gradient} ${colors.border}`}>
           <div className="flex items-center gap-3">
-            {category.icon && <span className="text-4xl">{category.icon}</span>}
+            <span className="rounded-xl border border-white/[0.08] bg-white/[0.06] p-3 text-white/85">
+              <CategoryIcon slug={category.slug} className="h-8 w-8" />
+            </span>
             <div>
               <h1 className="text-2xl font-bold text-white">{category.name}</h1>
               {category.description && (

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { ArticleWithCategory } from '@/types'
+import CategoryIcon from './CategoryIcon'
 
 type Props = {
   article: ArticleWithCategory
@@ -21,8 +22,9 @@ export default function ArticleCard({ article }: Props) {
       )}
       <div className="flex items-center gap-1.5 mt-3 flex-wrap">
         {article.category && (
-          <span className="text-xs px-2 py-0.5 bg-indigo-500/15 text-indigo-300/80 rounded-full border border-indigo-500/20">
-            {article.category.icon} {article.category.name}
+          <span className="inline-flex items-center gap-1.5 text-xs px-2 py-0.5 bg-indigo-500/15 text-indigo-300/80 rounded-full border border-indigo-500/20">
+            <CategoryIcon slug={article.category.slug} className="h-3.5 w-3.5" />
+            {article.category.name}
           </span>
         )}
         {article.tags?.slice(0, 2).map((tag) => (

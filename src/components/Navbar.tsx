@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navbar() {
   const router = useRouter()
@@ -39,6 +40,7 @@ export default function Navbar() {
           </div>
         </form>
 
+        <ThemeToggle />
       </div>
     </nav>
   )

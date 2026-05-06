@@ -8,6 +8,11 @@
     "start": "next start",
     "lint": "eslint",
     "import:os": "node scripts/import-os-pdf.mjs",
+    "import:network": "node scripts/import-network-pdf.mjs",
+    "import:database": "node scripts/import-cs-pdf.mjs database",
+    "import:data-structures": "node scripts/import-cs-pdf.mjs data-structures",
+    "import:design-patterns": "node scripts/import-cs-pdf.mjs design-patterns",
+    "import:dev-essentials": "node scripts/import-cs-pdf.mjs dev-essentials",
     "supabase:login": "supabase login",
     "supabase:link": "supabase link --project-ref aqgilpmssweihqjungqt",
     "supabase:push": "supabase db push"
