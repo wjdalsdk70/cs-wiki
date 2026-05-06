@@ -23,55 +23,52 @@ export default async function ArticlePage({ params }: Props) {
   if (!article) notFound()
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6">
-      <div>
-        <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-          <Link href="/" className="hover:text-gray-300">홈</Link>
-          <span>/</span>
-          {article.category && (
-            <>
-              <Link href={`/category/${article.category.slug}`} className="hover:text-gray-300">
-                {article.category.icon} {article.category.name}
-              </Link>
-              <span>/</span>
-            </>
-          )}
-          <span className="text-gray-400">{article.title}</span>
-        </div>
+    <div className="max-w-3xl mx-auto">
+      {/* Breadcrumb */}
+      <div className="flex items-center gap-2 text-xs text-white/25 mb-8">
+        <Link href="/" className="hover:text-white/50 transition-colors">홈</Link>
+        <span>/</span>
+        {article.category && (
+          <>
+            <Link href={`/category/${article.category.slug}`} className="hover:text-white/50 transition-colors">
+              {article.category.icon} {article.category.name}
+            </Link>
+            <span>/</span>
+          </>
+        )}
+        <span className="text-white/40 truncate max-w-xs">{article.title}</span>
+      </div>
 
-        <h1 className="text-3xl font-bold text-white">{article.title}</h1>
+      {/* Header */}
+      <div className="mb-10 pb-8 border-b border-white/[0.06]">
+        <h1 className="text-3xl font-bold text-white leading-tight">{article.title}</h1>
 
         {article.summary && (
-          <p className="text-gray-400 mt-2 text-lg">{article.summary}</p>
+          <p className="text-white/40 mt-3 text-base leading-relaxed">{article.summary}</p>
         )}
 
-        <div className="flex items-center gap-2 mt-3 flex-wrap">
+        <div className="flex items-center gap-2 mt-5 flex-wrap">
           {article.tags?.map((tag: string) => (
-            <span key={tag} className="text-xs px-2 py-0.5 bg-gray-800 text-gray-400 rounded border border-gray-700">
+            <span key={tag} className="text-xs px-2.5 py-1 bg-white/[0.05] text-white/35 rounded-full border border-white/[0.07]">
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="text-xs text-gray-600 mt-3">
+        <p className="text-white/20 text-xs mt-5">
           {new Date(article.updated_at).toLocaleDateString('ko-KR', {
-            year: 'numeric', month: 'long', day: 'numeric'
+            year: 'numeric', month: 'long', day: 'numeric',
           })} 업데이트
-        </div>
+        </p>
       </div>
 
-      <hr className="border-gray-800" />
-
+      {/* Content */}
       <MarkdownRenderer content={article.content} />
 
-      <hr className="border-gray-800" />
-
-      <div className="flex justify-end">
-        <Link
-          href={`/admin/edit/${article.id}`}
-          className="text-sm text-gray-500 hover:text-gray-300"
-        >
-          수정하기
+      {/* Footer */}
+      <div className="mt-12 pt-6 border-t border-white/[0.06] flex justify-between items-center">
+        <Link href={article.category ? `/category/${article.category.slug}` : '/'} className="text-sm text-white/25 hover:text-white/50 transition-colors">
+          ← {article.category?.name ?? '홈'}으로
         </Link>
       </div>
     </div>

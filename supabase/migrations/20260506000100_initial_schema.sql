@@ -54,7 +54,7 @@ insert into categories (name, slug, description, icon) values
   ('보안', 'security', '암호화, 인증, 취약점, 보안 프로토콜', '🔐')
 on conflict (slug) do nothing;
 
--- RLS Policies (공개 읽기, 인증된 사용자만 쓰기)
+-- RLS Policies
 alter table categories enable row level security;
 alter table articles enable row level security;
 

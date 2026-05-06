@@ -80,30 +80,33 @@ export default function ArticleEditor({ categories, article }: Props) {
       return
     }
 
-    router.push(`/wiki/${result.data.slug}`)
+    router.push('/admin')
     router.refresh()
   }
+
+  const inputCls = "w-full px-3 py-2 bg-white/[0.05] border border-white/[0.08] rounded-lg text-white/90 text-sm focus:outline-none focus:border-indigo-500/60 focus:bg-white/[0.07] placeholder-white/20 transition-all"
+  const labelCls = "block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wide"
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5 max-w-4xl">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-gray-400 mb-1">제목 *</label>
+          <label className={labelCls}>제목 *</label>
           <input
             required
             value={title}
             onChange={(e) => handleTitleChange(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:border-blue-500"
+            className={inputCls}
             placeholder="문서 제목"
           />
         </div>
         <div>
-          <label className="block text-sm text-gray-400 mb-1">슬러그 *</label>
+          <label className={labelCls}>슬러그 *</label>
           <input
             required
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-gray-300 focus:outline-none focus:border-blue-500 font-mono text-sm"
+            className={`${inputCls} font-mono`}
             placeholder="url-friendly-slug"
           />
         </div>
@@ -111,11 +114,11 @@ export default function ArticleEditor({ categories, article }: Props) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm text-gray-400 mb-1">카테고리</label>
+          <label className={labelCls}>카테고리</label>
           <select
             value={categoryId}
             onChange={(e) => setCategoryId(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:border-blue-500"
+            className={inputCls}
           >
             <option value="">카테고리 없음</option>
             {categories.map((cat) => (
@@ -126,42 +129,40 @@ export default function ArticleEditor({ categories, article }: Props) {
           </select>
         </div>
         <div>
-          <label className="block text-sm text-gray-400 mb-1">태그 (쉼표로 구분)</label>
+          <label className={labelCls}>태그 (쉼표로 구분)</label>
           <input
             value={tags}
             onChange={(e) => setTags(e.target.value)}
-            className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:border-blue-500"
+            className={inputCls}
             placeholder="배열, 탐색, O(n)"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm text-gray-400 mb-1">요약</label>
+        <label className={labelCls}>요약</label>
         <input
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
-          className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white focus:outline-none focus:border-blue-500"
+          className={inputCls}
           placeholder="문서 한 줄 요약"
         />
       </div>
 
       <div>
-        <div className="flex items-center justify-between mb-1">
-          <label className="text-sm text-gray-400">내용 (Markdown) *</label>
+        <div className="flex items-center justify-between mb-1.5">
+          <label className={labelCls} style={{ marginBottom: 0 }}>내용 (Markdown) *</label>
           <button
             type="button"
             onClick={() => setPreview((p) => !p)}
-            className="text-xs text-blue-400 hover:underline"
+            className="text-xs text-indigo-400 hover:text-indigo-300 transition-colors"
           >
-            {preview ? '편집' : '미리보기'}
+            {preview ? '← 편집' : '미리보기 →'}
           </button>
         </div>
         {preview ? (
-          <div className="min-h-64 p-4 bg-gray-900 border border-gray-700 rounded-md">
-            <div className="prose prose-invert prose-sm max-w-none prose-code:before:content-none prose-code:after:content-none">
-              <pre className="whitespace-pre-wrap text-gray-300 font-sans">{content || '내용 없음'}</pre>
-            </div>
+          <div className="min-h-64 p-5 bg-white/[0.03] border border-white/[0.08] rounded-lg">
+            <pre className="whitespace-pre-wrap text-white/50 text-sm font-mono leading-relaxed">{content || '내용 없음'}</pre>
           </div>
         ) : (
           <textarea
@@ -169,39 +170,39 @@ export default function ArticleEditor({ categories, article }: Props) {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             rows={20}
-            className="w-full px-3 py-2 bg-gray-900 border border-gray-700 rounded-md text-gray-200 focus:outline-none focus:border-blue-500 font-mono text-sm resize-y"
+            className="w-full px-4 py-3 bg-white/[0.03] border border-white/[0.08] rounded-lg text-white/80 focus:outline-none focus:border-indigo-500/50 font-mono text-sm resize-y placeholder-white/15 transition-all"
             placeholder="# 제목&#10;&#10;내용을 작성하세요..."
           />
         )}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2.5">
         <input
           type="checkbox"
           id="published"
           checked={isPublished}
           onChange={(e) => setIsPublished(e.target.checked)}
-          className="w-4 h-4"
+          className="w-4 h-4 accent-indigo-500"
         />
-        <label htmlFor="published" className="text-sm text-gray-400">공개 (체크 해제 시 비공개)</label>
+        <label htmlFor="published" className="text-sm text-white/30">공개 (체크 해제 시 비공개)</label>
       </div>
 
       {error && (
-        <p className="text-red-400 text-sm">{error}</p>
+        <p className="text-red-400/80 text-sm bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">{error}</p>
       )}
 
-      <div className="flex gap-3">
+      <div className="flex gap-3 pt-2">
         <button
           type="submit"
           disabled={saving}
-          className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors"
+          className="px-5 py-2 text-sm font-medium bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg hover:from-indigo-500 hover:to-violet-500 disabled:opacity-40 transition-all shadow-lg shadow-indigo-500/20"
         >
           {saving ? '저장 중...' : isEdit ? '수정 저장' : '문서 생성'}
         </button>
         <button
           type="button"
           onClick={() => router.back()}
-          className="px-5 py-2 bg-gray-700 text-gray-300 rounded-md hover:bg-gray-600 transition-colors"
+          className="px-5 py-2 text-sm bg-white/[0.05] text-white/50 rounded-lg hover:bg-white/[0.08] hover:text-white/70 transition-all"
         >
           취소
         </button>

@@ -3,6 +3,7 @@ import ArticleCard from '@/components/ArticleCard'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { ArticleWithCategory } from '@/types'
+import { getCategoryColors } from '@/lib/categoryColors'
 
 export const revalidate = 60
 
@@ -29,22 +30,27 @@ export default async function CategoryPage({ params }: Props) {
     .eq('is_published', true)
     .order('created_at', { ascending: false })
 
+  const colors = getCategoryColors(category.slug)
+
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       <div>
-        <Link href="/" className="text-gray-500 hover:text-gray-300 text-sm">
+        <Link href="/" className="text-white/30 hover:text-white/60 text-sm transition-colors">
           ← 전체 카테고리
         </Link>
-        <div className="flex items-center gap-3 mt-3">
-          {category.icon && <span className="text-3xl">{category.icon}</span>}
-          <div>
-            <h1 className="text-2xl font-bold text-white">{category.name}</h1>
-            {category.description && (
-              <p className="text-gray-400 mt-1">{category.description}</p>
-            )}
+
+        <div className={`mt-5 p-6 rounded-2xl border bg-gradient-to-br ${colors.gradient} ${colors.border}`}>
+          <div className="flex items-center gap-3">
+            {category.icon && <span className="text-4xl">{category.icon}</span>}
+            <div>
+              <h1 className="text-2xl font-bold text-white">{category.name}</h1>
+              {category.description && (
+                <p className="text-white/50 mt-1 text-sm">{category.description}</p>
+              )}
+            </div>
           </div>
+          <p className="text-white/25 text-xs mt-4">{articles?.length ?? 0}개 문서</p>
         </div>
-        <p className="text-gray-500 text-sm mt-2">{articles?.length ?? 0}개 문서</p>
       </div>
 
       {articles && articles.length > 0 ? (
@@ -54,11 +60,8 @@ export default async function CategoryPage({ params }: Props) {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 text-gray-500">
-          <p>아직 문서가 없습니다.</p>
-          <Link href="/admin/new" className="mt-3 inline-block text-blue-400 hover:underline">
-            첫 문서 작성하기 →
-          </Link>
+        <div className="text-center py-20">
+          <p className="text-white/20 text-sm">아직 문서가 없습니다.</p>
         </div>
       )}
     </div>

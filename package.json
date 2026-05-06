@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "import:os": "node scripts/import-os-pdf.mjs",
+    "supabase:login": "supabase login",
+    "supabase:link": "supabase link --project-ref aqgilpmssweihqjungqt",
+    "supabase:push": "supabase db push"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.2",
@@ -26,6 +30,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "supabase": "^2.98.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
