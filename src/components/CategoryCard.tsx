@@ -17,7 +17,7 @@ export default function CategoryCard({ category, articleCount }: Props) {
       className={`group block p-5 rounded-xl border bg-gradient-to-br ${colors.gradient} ${colors.border} hover:border-opacity-60 transition-all duration-300 hover:shadow-xl ${colors.glow}`}
     >
       <div className="flex items-start gap-3">
-        <span className="mt-0.5 rounded-lg border border-white/[0.08] bg-white/[0.06] p-2 text-white/80 transition-colors group-hover:text-white">
+        <span className="mt-0.5 rounded-lg border border-white/[0.08] bg-white/[0.05] p-2 text-white/75 transition-colors group-hover:bg-white/[0.08] group-hover:text-white">
           <CategoryIcon slug={category.slug} className="h-5 w-5" />
         </span>
         <div className="min-w-0">

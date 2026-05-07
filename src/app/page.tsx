@@ -31,14 +31,14 @@ export default async function HomePage() {
     <div className="space-y-14">
       {/* Hero */}
       <section className="pt-6 pb-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-5">
-          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-sky-200 text-xs font-medium mb-5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
           {totalArticles}개 문서
         </div>
         <h1 className="text-4xl font-bold text-white leading-tight">
           컴퓨터과학 개념을
           <br />
-          <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-sky-300 via-cyan-200 to-emerald-200 bg-clip-text text-transparent">
             빠르게 찾아보세요.
           </span>
         </h1>

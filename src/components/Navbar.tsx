@@ -17,10 +17,10 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/[0.06] bg-black/40 backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-white/[0.06] bg-slate-950/55 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center gap-4">
         <Link href="/" className="shrink-0 flex items-center gap-2">
-          <span className="text-lg font-bold bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
+          <span className="text-lg font-bold bg-gradient-to-r from-sky-300 via-cyan-200 to-emerald-200 bg-clip-text text-transparent">
             CS Wiki
           </span>
         </Link>
@@ -35,7 +35,7 @@ export default function Navbar() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="검색..."
-              className="w-full pl-9 pr-3 py-1.5 bg-white/[0.06] text-white/80 rounded-lg text-sm border border-white/[0.08] focus:outline-none focus:border-indigo-500/60 focus:bg-white/[0.08] placeholder-white/20 transition-all"
+              className="w-full pl-9 pr-3 py-1.5 bg-white/[0.06] text-white/80 rounded-lg text-sm border border-white/[0.08] focus:outline-none focus:border-sky-400/50 focus:bg-white/[0.08] placeholder-white/20 transition-all"
             />
           </div>
         </form>

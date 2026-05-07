@@ -1,15 +1,15 @@
 const palette: Record<string, { gradient: string; border: string; glow: string }> = {
-  'data-structures':      { gradient: 'from-blue-600/20 to-cyan-600/10',    border: 'border-blue-500/30',   glow: 'group-hover:shadow-blue-500/20' },
-  'algorithms':           { gradient: 'from-violet-600/20 to-purple-600/10', border: 'border-violet-500/30', glow: 'group-hover:shadow-violet-500/20' },
-  'operating-systems':    { gradient: 'from-orange-600/20 to-amber-600/10',  border: 'border-orange-500/30', glow: 'group-hover:shadow-orange-500/20' },
-  'networks':             { gradient: 'from-teal-600/20 to-green-600/10',    border: 'border-teal-500/30',   glow: 'group-hover:shadow-teal-500/20' },
-  'databases':            { gradient: 'from-pink-600/20 to-rose-600/10',     border: 'border-pink-500/30',   glow: 'group-hover:shadow-pink-500/20' },
-  'computer-architecture':{ gradient: 'from-yellow-600/20 to-lime-600/10',   border: 'border-yellow-500/30', glow: 'group-hover:shadow-yellow-500/20' },
-  'languages-compilers':  { gradient: 'from-indigo-600/20 to-blue-600/10',   border: 'border-indigo-500/30', glow: 'group-hover:shadow-indigo-500/20' },
-  'security':             { gradient: 'from-red-600/20 to-orange-600/10',    border: 'border-red-500/30',    glow: 'group-hover:shadow-red-500/20' },
+  'data-structures':       { gradient: 'from-sky-500/14 to-cyan-400/7',       border: 'border-sky-300/20',    glow: 'group-hover:shadow-sky-500/12' },
+  algorithms:              { gradient: 'from-fuchsia-500/12 to-rose-400/7',   border: 'border-fuchsia-300/18', glow: 'group-hover:shadow-fuchsia-500/10' },
+  'operating-systems':     { gradient: 'from-amber-500/13 to-orange-400/7',   border: 'border-amber-300/20',   glow: 'group-hover:shadow-amber-500/10' },
+  networks:                { gradient: 'from-emerald-500/13 to-teal-400/7',   border: 'border-emerald-300/20', glow: 'group-hover:shadow-emerald-500/10' },
+  databases:               { gradient: 'from-rose-500/12 to-pink-400/7',      border: 'border-rose-300/18',    glow: 'group-hover:shadow-rose-500/10' },
+  'computer-architecture': { gradient: 'from-lime-500/12 to-yellow-400/7',    border: 'border-lime-300/18',    glow: 'group-hover:shadow-lime-500/10' },
+  'languages-compilers':   { gradient: 'from-blue-500/13 to-indigo-400/7',    border: 'border-blue-300/18',    glow: 'group-hover:shadow-blue-500/10' },
+  security:                { gradient: 'from-red-500/12 to-amber-400/7',      border: 'border-red-300/18',     glow: 'group-hover:shadow-red-500/10' },
 }
 
-const fallback = { gradient: 'from-slate-600/20 to-slate-700/10', border: 'border-slate-500/30', glow: 'group-hover:shadow-slate-500/20' }
+const fallback = { gradient: 'from-slate-500/12 to-zinc-400/6', border: 'border-slate-300/18', glow: 'group-hover:shadow-slate-500/10' }
 
 export function getCategoryColors(slug: string) {
   return palette[slug] ?? fallback
